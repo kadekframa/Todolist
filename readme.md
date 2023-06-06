@@ -20,6 +20,11 @@ Assets:
 
 ### Backend
 
+#### Import sql file into Database Server
+```
+import todolist_mysql.sql file in backend folder to database server (xampp or others).
+```
+
 #### Project Setup
 
 ```
