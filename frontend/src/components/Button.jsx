@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 export const ButtonCheck = (props) => {
+  // destructure object props.
   const { id, name, handleCheck } = props;
+
   return (
     <button
       onClick={() => handleCheck(id, name)}

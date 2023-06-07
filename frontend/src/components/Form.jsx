@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 
 const Form = (props) => {
-  const { input, setInput, submitTodo, handleFormChange, editTodo } = props;
+  // destructure object props.
+  const { input, submitTodo, handleFormChange, editTodo } = props;
 
   return (
     <form onSubmit={submitTodo} className="flex justify-between w-full mt-7">

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Completed from "./components/Completed";
@@ -11,11 +10,13 @@ function App() {
   const [editTodo, setEditTodo] = useState(false);
 
   useEffect(() => {
+    // Get all data todo.
     if (status) {
       getAllTodo();
       setStatus(false);
     }
 
+    // Set input where there is data want to update (edit)
     if (editTodo) {
       setInput(editTodo.name);
     } else {
@@ -23,6 +24,7 @@ function App() {
     }
   }, [status, setStatus, editTodo, setInput]);
 
+  // Get all todo data function.
   const getAllTodo = async () => {
     try {
       const data = await fetch("http://localhost:4000/api/todolist", {
@@ -35,11 +37,13 @@ function App() {
     }
   };
 
+  // handleFormChange function will set the input state when there is data typing in form by user.
   const handleFormChange = (event) => {
     setInput(event.target.value);
     console.info(event.target.value);
   };
 
+  // updateTodo function will run when editTodo state is true.
   const updateTodo = async (id, isCompleted) => {
     try {
       await fetch(`http://localhost:4000/api/todo/${id}`, {
@@ -62,6 +66,7 @@ function App() {
     setEditTodo(false);
   };
 
+  // submitTodo function is use to submit the todo data. This function will check the editTodo state, if the state is true the function will update todo item which user want to edit.
   const submitTodo = async (event) => {
     event.preventDefault();
     setStatus(!status);
@@ -89,6 +94,7 @@ function App() {
     }
   };
 
+  // handleCheck function is use to change the status todo to complete.
   const handleCheck = async (id, name) => {
     try {
       await fetch(`http://localhost:4000/api/todo/${id}`, {
@@ -108,6 +114,7 @@ function App() {
     }
   };
 
+  // handleDelete function is use to delete todo item which want to delete when user click the trash button.
   const handleDelete = async (id) => {
     try {
       await fetch(`http://localhost:4000/api/todo/${id}`, {
@@ -120,6 +127,7 @@ function App() {
     }
   };
 
+  // handleEdit function is use to get spesific todo item which want to edit by user. And will set the data into editTodo state.
   const handleEdit = async (id) => {
     const showTodo = await fetch(`http://localhost:4000/api/todolist/${id}`, {
       method: "GET",

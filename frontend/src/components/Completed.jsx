@@ -4,7 +4,9 @@ import React from "react";
 import { ButtonUncheck, ButtonDelete, ButtonEdit } from "./Button";
 
 const Completed = (props) => {
+  // destructure object props.
   const { id, name, handleEdit, handleDelete } = props;
+
   return (
     <div className="bg-[#3e5264] rounded-md py-2.5 px-3 mt-2 flex justify-between bg-opacity-40">
       <div className="flex items-center">
